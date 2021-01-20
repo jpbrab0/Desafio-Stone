@@ -3,7 +3,7 @@
 
 Desafio feito com Javascript.
 
-Este código é a resolução do teste técnico do programa de formação em elixir da stone.
+Este código é a resolução do teste técnico do programa de formação em elixir da Stone.
 
 ## Instalação
 
