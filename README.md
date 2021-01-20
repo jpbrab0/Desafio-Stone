@@ -14,7 +14,7 @@ Pré-requisitos:
 Baixando código na maquina local:
 
 ```git
-git clone https://github.com/jpbrab0/desafio-stone
+git clone https://github.com/jpbrab0/Desafio-stone
 ```
 ## Rodando projeto
 
