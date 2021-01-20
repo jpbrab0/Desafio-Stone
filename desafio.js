@@ -1,6 +1,14 @@
+// - Código do desafio feito por João Pedro Resende.
 
 let valorLista
-let emails = []
+
+// - Variaveis para teste.
+const itens = []
+const quantidade = []
+const precos = []
+const emails = []
+
+let reciboTotal = []
 
 // - Função para receber lista de compras.
 function recebeListaDeCompras(itens, quantidade, preco){
@@ -18,16 +26,17 @@ function recebeListaDeCompras(itens, quantidade, preco){
 // - Função para receber emails.
 function recebeEmail(email){
   // - Variavel para dividir valores igualmente e arredondando caso necessário..
-  const dividirValor = Math.round(valorLista / email.length)
+  const dividirValor = Math.round(valorLista / email.length) + 1
   
   // - Por fim, percorre o array, pegando cada email e colocando na variavel emails com o email e o valor a pagar. 
   email.map(valorArray => {
-    emails.push({"email": valorArray, "valor a pagar": dividirValor})
+    reciboTotal.push({"email": valorArray, "valor a pagar": dividirValor})
   })
 }
 
-recebeListaDeCompras(["feijao", "arroz"], [2, 3], [1.99, 2.99])
-recebeEmail(["jose@gmail.com", "joao@gmail.com"])
+// - Rodando funções
+recebeListaDeCompras(itens, quantidade, precos)
+recebeEmail(emails)
 
 // - console.log para retornar os valores.
-console.log(emails)
+console.log(reciboTotal)
