@@ -3,40 +3,41 @@
 let valorLista
 
 // - Variaveis para teste.
-const itens = []
-const quantidade = []
-const precos = []
-const emails = []
+const itens = [["Maça", "Abacaxi"],["Banana"]]
+const quantidade = [[2,3], 3]
+const precos = [[2, 2], 2]
+const emails = ["joao@gmail.com", "jose@gmail.com"]
 
 let reciboTotal = []
 
-// - Função para receber lista de compras.
-function recebeListaDeCompras(itens, quantidade, preco){
-  console.log(`Itens comprados: ${itens}`)
-  // - Função para somar itens de um array.
-  const reducer = (accumulator, currentValue) => accumulator + currentValue;
-  
-  // - Calculo do valor final.
-  const valores = quantidade.reduce(reducer) * preco.reduce(reducer)
-
-  // - Por fim, define o valor da variavel valorLista com o resultado do calculo final.
-  valorLista = valores
-}
-
 // - Função para receber emails.
-function recebeEmail(email){
-  // - Variavel para dividir valores igualmente e arredondando caso necessário..
-  const dividirValor = Math.round(valorLista / email.length) + 1
-  
-  // - Por fim, percorre o array, pegando cada email e colocando na variavel emails com o email e o valor a pagar. 
-  email.map(valorArray => {
-    reciboTotal.push({"email": valorArray, "valor a pagar": dividirValor})
-  })
+function gerarRecibo(itens, quantidade, precos, email){
+  let total
+  let reciboEmail = []
+  const reducer = (accumulator, currentValue) => accumulator + currentValue;
+
+  // - Calcular valor de toda lista de compras.
+  for(i = 0; i < email.length; i++){
+    if(typeof quantidade[i] === "object" && typeof precos[i] === "object"){
+      total = quantidade[i].reduce(reducer) * precos[i].reduce(reducer)
+    }
+    total = quantidade[i] * precos[i]
+  }
+
+  // - Calcular troco.
+  valorRestante = total / email.length 
+  troco = total % email.length 
+
+  // - Percorrer array de emails e colocando no array.
+  for(k = 0; k < email.length; k++){
+    reciboEmail.push({
+      "Email":email[k],
+      "Itens":itens[k],
+      "Total": k > 0 ? valorRestante : valorRestante + troco
+    })
+  }
+  return reciboEmail
 }
 
-// - Rodando funções
-recebeListaDeCompras(itens, quantidade, precos)
-recebeEmail(emails)
-
-// - console.log para retornar os valores.
-console.log(reciboTotal)
+// - Rodando função de gerarRecibo e mostrar o recibo.
+console.log(gerarRecibo(itens, quantidade, precos, emails))
