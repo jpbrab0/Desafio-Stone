@@ -1,0 +1,14 @@
+{
+  "name": "Desafio-elixir-stone",
+  "version": "1.0.0",
+  "description": "",
+  "main": "desafio.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "João Pedro Resende",
+  "license": "ISC",
+  "devDependencies": {},
+  "dependencies": {}
+}
