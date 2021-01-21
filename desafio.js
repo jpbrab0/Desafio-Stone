@@ -9,11 +9,13 @@ const emails = ["joao@gmail.com", "jose@gmail.com"]
 
 let reciboTotal = []
 
-// - Função para receber emails.
+// - Função para gerar recibo.
 function gerarRecibo(itens, quantidade, precos, email){
 
   // - Variavel para contabilizar o gasto de cada email.
   let totalEmails = []
+
+  // - Variavel para registrar a compra de cada email.
   let reciboEmail = []
 
   // - Função para somar todos os itens de um determinado array.
