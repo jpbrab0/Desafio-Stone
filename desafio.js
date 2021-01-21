@@ -1,8 +1,7 @@
 // - Código do desafio feito por João Pedro Resende.
 
-let valorLista
+// - Coloque os dados da lista de compras nestas variaveis.
 
-// - Variaveis para teste.
 const itens = [["Maça", "Abacaxi"],["Banana"]]
 const quantidade = [[2,3], 3]
 const precos = [[2, 2], 2]
@@ -12,28 +11,30 @@ let reciboTotal = []
 
 // - Função para receber emails.
 function gerarRecibo(itens, quantidade, precos, email){
-  let total
+
+  // - Variavel para contabilizar o gasto de cada email.
+  let totalEmails = []
   let reciboEmail = []
+
+  // - Função para somar todos os itens de um determinado array.
   const reducer = (accumulator, currentValue) => accumulator + currentValue;
 
   // - Calcular valor de toda lista de compras.
   for(i = 0; i < email.length; i++){
-    if(typeof quantidade[i] === "object" && typeof precos[i] === "object"){
-      total = quantidade[i].reduce(reducer) * precos[i].reduce(reducer)
+    if(typeof quantidade[i] === 'object'){
+      totalEmails.push(quantidade[i].reduce(reducer) * precos[i].reduce(reducer))
+    } else {
+      totalEmails.push(quantidade[i] * precos[i])
     }
-    total = quantidade[i] * precos[i]
   }
-
-  // - Calcular troco.
-  valorRestante = total / email.length 
-  troco = total % email.length 
-
-  // - Percorrer array de emails e colocando no array.
+  // - Percorrer array de emails e colocando na variavel reciboEmail com o email, itens e o total a pagar.
   for(k = 0; k < email.length; k++){
+    // - Variavel para calcular troco.
+    let troco = totalEmails[k] % email.length
     reciboEmail.push({
       "Email":email[k],
       "Itens":itens[k],
-      "Total": k > 0 ? valorRestante : valorRestante + troco
+      "Total": k > 0 ? totalEmails[k] / email.length : (totalEmails[k] / email.length) + troco // - Caso k seja maior que 0, vai calcular o preço a pagar do email.
     })
   }
   return reciboEmail
