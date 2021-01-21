@@ -20,13 +20,13 @@ git clone https://github.com/jpbrab0/Desafio-stone
 
 1. Passo - Configurar variaveis
 
-Nas linhas 6 a 9 você deve configurar as variáveis para rodar corretamente o projeto.
+Nas linhas 5 a 8 você deve configurar as variáveis para rodar corretamente o projeto.
 
 Exemplo:
 ```js
-const itens = ["Maça", "Banana"]
-const quantidade = [3, 5]
-const precos = [2.99, 3.99]
+const itens = [["Maça", "Abacaxi"],["Banana"]]
+const quantidade = [[2,3], 3]
+const precos = [[2, 2], 2]
 const emails = ["joao@gmail.com", "jose@gmail.com"]
 ```
 
