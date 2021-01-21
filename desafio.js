@@ -34,7 +34,8 @@ function gerarRecibo(itens, quantidade, precos, email){
     reciboEmail.push({
       "Email":email[k],
       "Itens":itens[k],
-      "Total": k > 0 ? totalEmails[k] / email.length : (totalEmails[k] / email.length) + troco // - Caso k seja maior que 0, vai calcular o preço a pagar do email.
+      "TotalCompra": k > 0 ? totalEmails[k] : totalEmails[k] + troco, // - Caso k seja maior que 0, vai calcular o preço a pagar do email.
+      "TotalAPagar": (totalEmails.reduce(reducer)) / email.length // - Total dividido para cada email pagar, como pedido no desafio.
     })
   }
   return reciboEmail
